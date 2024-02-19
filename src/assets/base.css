@@ -1,0 +1,89 @@
+:root {
+    --background-body: #24282F;
+    --background-card: #3C3E44;
+    --text-white: #FFFFFF;
+    --text-gray: #c0c0c0;
+    --text-orange: #FF9800;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: -ms-page;
+    font-size: 98%;
+}
+    
+  body {
+    min-height: 100vh;
+    color: var(--text-white);
+    background: var(--background-body);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+  }
+  
+  h2, p{
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+}
+
+/* ESTILO TABELAS*/
+table {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: auto;
+  margin: 0.7rem 0;
+  padding: 0.2rem;
+  font: 500 1.1rem Poppins;
+  text-decoration: none;
+}
+
+thead,
+th {
+  font: 700 small-caps 1.1rem Poppins;
+  background: #ADB5BD;
+  color: #fff;
+  padding: 0.2rem;
+  border-collapse: collapse;
+  align-self: center;
+  border-bottom: 1px solid #FFC100;
+}
+
+th,
+td{
+  text-align: center;
+  align-self: center;
+  padding: 0.1rem auto;
+  margin: 0.2rem 0.1rem;
+  text-decoration: none;
+
+}
+td a{
+  display: block;
+}
+
+tr:nth-child(2n+1) {
+  background: #CED4DA;
+}
+
+tr:hover {
+  background-color: rgb(176, 224, 230);
+  color: #000;
+  cursor: pointer;
+}
+
+tr {
+  text-decoration: none;
+}
+
