@@ -75,7 +75,8 @@ async function login() {
 <style>
 section{
   width: 100%;
-  display: flex ;  
+  display: flex ;
+  height: ;  
 }
 
 input[type="text"],
@@ -90,8 +91,8 @@ input[type="email"]{
   justify-content: space-evenly ;
   align-self: center;
   padding: 100px;
-  width: 100%;
-  height: 100%; 
+  width: 95%;
+  height: 95%; 
 }
 .content-login img {
   width: 300px;
