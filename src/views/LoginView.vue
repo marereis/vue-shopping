@@ -28,7 +28,7 @@ async function login() {
 
 <template>
   <section>
-    <div class="titleHeder">
+    <div class="content-login">
       <div>
         <img
           src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
@@ -75,17 +75,43 @@ async function login() {
 <style>
 section{
   width: 100%;
-  align-self: center;
+  display: flex ;  
 }
+
 input[type="text"],
 input[type="password"],
 input[type="email"]{
-  width: 400px;
+  width: 350px;
+  height: 35px;
 }
-.titleHeder {
-  display: flex !important;
-  flex-flow: row nowrap !important;
-  justify-content: space-around !important;
-  align-items: stretch !important;
+.content-login {
+  display: flex ;
+  flex-flow: row wrap;
+  justify-content: space-evenly ;
+  align-self: center;
+  padding: 100px;
+  width: 100%;
+  height: 100%; 
+}
+.content-login img {
+  width: 300px;
+}
+
+@media screen and (max-width:700px){
+    :root{
+     font-size: 80%;
+    }   
+    .content-login {
+  display: flex ;
+  flex-flow: row wrap;
+  justify-content: space-evenly ;
+  align-self: center;
+  padding: 100px;
+  width: 100%;
+  height: 100%; 
+}
+.content-login img {
+  display: none;
+}
 }
 </style>

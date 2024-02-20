@@ -122,6 +122,8 @@ const closePanel = () => {
 
 <style lang="scss" scoped>
 .panel {
+  display: flex;
+  flex-flow: column nowrap;
   position: absolute;
   top: 46px;
   bottom: 0;
@@ -181,7 +183,28 @@ td {
   overflow: hidden;
   height: 30px;
 }
+.qty span {
+  margin: 0 15px;
+  color: #000;
+}
 
+.qty button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: transparent;
+  border: 0;
+  padding: 0 10px;
+  font-size: 20px;
+  height: 100%;
+}
+
+.qty button:hover {
+  background: #ddd;
+}
 aside {
   margin-left: 15px;
   font-size: 90%;
@@ -262,26 +285,44 @@ aside > button:hover {
   background: #d37f00;
 }
 
-.qty span {
-  margin: 0 15px;
-  color: #000;
+
+
+@media screen and (max-width:700px){
+    :root{
+     font-size: 50%;
+    }   
+    table{
+        width: 100%;
+        border: 1px solid #555555;
+        margin: 1rem auto;
+        padding: 0;
+        font: 600 0.8rem Verdana;
+    }
+
+    .panel {
+   flex-flow: row wrap;
+  position: absolute;
+     top: 80px;
+    bottom: 0;
+    right: 0;
+    &-wrap {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    transform: translateX(100%);
+    transition: 0.3s ease-out;
+    &.visible {
+      transform: translateX(0);
+    }
+  }
+}
+aside {
+  font-size: 60%;
+  width: 100%;
+  margin: auto;
+}
 }
 
-.qty button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: transparent;
-  border: 0;
-  padding: 0 10px;
-  font-size: 20px;
-  height: 100%;
-}
-
-.qty button:hover {
-  background: #ddd;
-}
 </style>
