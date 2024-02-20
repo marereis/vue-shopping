@@ -106,12 +106,13 @@ input[type="email"]{
   flex-flow: row wrap;
   justify-content: space-evenly ;
   align-self: center;
-  padding: 100px;
+  padding: 10px;
   width: 100%;
   height: 100%; 
 }
 .content-login img {
-  display: none;
+  width: 200px;
+  margin: 40px;
 }
 }
 </style>
