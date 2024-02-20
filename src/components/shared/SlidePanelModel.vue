@@ -289,14 +289,14 @@ aside > button:hover {
 
 @media screen and (max-width:700px){
     :root{
-     font-size: 50%;
+     font-size: 60%;
     }   
     table{
-        width: 100%;
+        width: 95%;
         border: 1px solid #555555;
         margin: 1rem auto;
         padding: 0;
-        font: 600 0.8rem Verdana;
+        font: 600 1.2rem Verdana;
     }
 
     .panel {
@@ -319,8 +319,8 @@ aside > button:hover {
   }
 }
 aside {
-  font-size: 60%;
-  width: 100%;
+  font-size: 40%;
+  width: 95%;
   margin: auto;
 }
 }

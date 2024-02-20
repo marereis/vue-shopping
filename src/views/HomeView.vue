@@ -113,4 +113,23 @@ img{
   position: inherit;
   top:10px
 }
+@media screen and (max-width:700px){
+    :root{
+     font-size: 76%;
+    } 
+
+.card2 {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  width: 200px;
+   height: 320px;
+   }
+   .card:hover {
+  /* background-color: var(--text-orange); */
+  transition: 0.3s ease-out;
+  width: 210px;
+  height: 330px;
+}
+}
 </style>
