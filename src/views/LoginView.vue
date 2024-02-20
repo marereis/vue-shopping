@@ -76,7 +76,7 @@ async function login() {
 section{
   width: 100%;
   display: flex ;
-  height: ;  
+  height: 95%;  
 }
 
 input[type="text"],
