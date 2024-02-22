@@ -38,11 +38,16 @@ export const useCart = () => {
     return cart.value.reduce((acc, item) => acc + item.price, 0);
   };
 
+  function LimparCart() {
+    this.cart = [];
+  }
+
   return {
     productsCart,
     cart,
     addCart,
     removeCart,
+    LimparCart,
     calculateTotal,
     sumItensCart
   }

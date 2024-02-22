@@ -52,7 +52,7 @@
 
 <script setup>
 import { useCart } from "../composables/useCart.js";
-const { productsCart, addCart, cart, removeCart, calculateTotal, sumItensCart } = useCart();
+const { productsCart, addCart, cart, removeCart, calculateTotal, sumItensCart, LimparCart } = useCart();
 import { ref, reactive, computed, onMounted } from "vue";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
@@ -72,6 +72,8 @@ async function geraPdf() {
   doc.autoTable({ html: "#resume" });
 
   doc.save("comprovanteVenda.pdf");
+
+  LimparCart();
 
  }
 </script>
