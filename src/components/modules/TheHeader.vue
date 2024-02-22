@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { ref, reactive, computed, onMounted } from "vue";
+import { useCart } from "../../composables/useCart.js";
+const { productsCart, addCart, cart, removeCart, calculateTotal, sumItensCart } = useCart();
 </script>
 
 <template>
@@ -49,7 +51,7 @@ import { ref, reactive, computed, onMounted } from "vue";
         </div>
 
       </div> 
-      <div class="header-car"><div><img src="/img/cart-img.png" alt="Carrinho de compras"></div><span>0</span></div>
+      <div class="header-car"><div><img src="/img/cart-img.png" alt="Carrinho de compras"></div><span>{{ sumItensCart() }}</span></div>
     </nav>
    
   </header>
@@ -70,7 +72,7 @@ import { ref, reactive, computed, onMounted } from "vue";
    flex-flow: column wrap !important;
   justify-content: space-around !important;
   margin: 0 20px;
-  height: 40px;
+  height: 35px;
   top:0;
   right: 0;
 background-color: rgb(245, 239, 239);
@@ -79,11 +81,13 @@ align-self: center !important;
 .header-car img{
   width: 30px;
   height: 30px;
+  margin: 0 15px;
 }
 .header-car span{
-  width: 100px;
+  width: 80px;
   text-align: center;
   font-size: 28px;
-  color: rgb(36, 34, 34);
+  font-weight: 600;
+  color: rgb(241, 9, 9);
 }
 </style>

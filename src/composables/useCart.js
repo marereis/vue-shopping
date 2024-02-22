@@ -3,7 +3,6 @@ import http from "@/Services/api.js";
 
 const productsCart = ref([]);
 const cart = ref([]);
-const sumCart = ref();
 
 http
   .get("/products")
@@ -21,8 +20,8 @@ export const useCart = () => {
     const inCart = cart.value.some(obj => obj.id === productsCart.id);
     if (!inCart) {
       cart.value.push(productsCart);
-      alert('Produto ' + productsCart.title +' Inserido no Carrinho')
-    }    
+      alert('Produto: ' + productsCart.title + ' ,Inserido no Carrinho')
+    }
   }
 
   function removeCart(id) {
@@ -31,10 +30,20 @@ export const useCart = () => {
     alert('Produto Removido no Carrinho')
   }
 
+  const sumItensCart = () => {
+    return cart.value.length;
+  }
+
+  const calculateTotal = () => {
+    return cart.value.reduce((acc, item) => acc + item.price, 0);
+  };
+
   return {
     productsCart,
     cart,
     addCart,
-    removeCart
+    removeCart,
+    calculateTotal,
+    sumItensCart
   }
 }

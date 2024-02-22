@@ -7,7 +7,7 @@
         </div>
         <div>
           <button class="btn btn-danger error--outline" @click="closePanel()">
-            Close
+            Voltar para a Loja
           </button>
         </div>
       </div>
@@ -22,7 +22,7 @@
               <th scope="col"></th>
             </tr>
           </thead>
-         
+
           <tbody>
             <tr v-for="product in cart" :key="product.id">
               <td><img :src="product.image" alt="..." /></td>
@@ -34,7 +34,7 @@
                   <button>+</button>
                 </div>
               </td>
-              <td class="priceTotal" >{{ product.price }}</td>
+              <td class="priceTotal">{{ product.price }}</td>
               <td>
                 <button
                   class="btn btn-primary btn2"
@@ -48,11 +48,13 @@
         </table>
 
         <hr />
-       <aside>
+        <aside>
           <div class="box">
             <header>Resumo da compra</header>
             <div class="info">
-              <div><span>Sub-total</span><span>R$ 418</span></div>
+              <div>
+                <span>Sub-total</span><span>{{ calculateTotal() }}</span>
+              </div>
               <div><span>Frete</span><span>Gratuito</span></div>
               <div>
                 <button>
@@ -61,43 +63,42 @@
                 </button>
               </div>
             </div>
+            <header>Forme de Pagamento</header>
+            <div class="info">
+              <select >
+                <option value="credit_card">Cartão de Crédito</option>
+                <option value="debit_card">Cartão de Débito</option>
+                <option value="pix">PIX</option>
+                <option value="paypal">PayPal</option>
+                <option value="boleto">Boleto Bancário</option>
+              </select>
+            </div>
             <footer>
               <span>Total</span>
-              <span>R$ 418</span>
+              <span>{{ calculateTotal() }}</span>
             </footer>
           </div>
-          <button><router-link to="/compras">Finalizar Compra</router-link></button>
+          <button>
+            <router-link to="/compras">Finalizar Compra</router-link>
+          </button>
         </aside>
       </slot>
     </div>
-   </div>
+  </div>
 </template>
 
 <script setup>
 import { RouterLink } from "vue-router";
 import { useCart } from "../../composables/useCart.js";
-const { productsCart, addCart, cart, removeCart } = useCart();
+const {
+  productsCart,
+  addCart,
+  cart,
+  removeCart,
+  calculateTotal,
+  sumItensCart,
+} = useCart();
 import { ref, reactive, computed, onMounted } from "vue";
-
-// const total = ref();
-// const totalPrice = ref([]);
-// const sumCart = reactive([]);
-
-// const listaCart = ()=>{
-//   total == cart.value;
-//   return total
-// }
-
-// alert(Array.isArray(total));
-
-let tdsValores = document.querySelectorAll('.priceTotal');
-
-const numeros =  [0,100,20,10];
-let soma = 0;
-for (let n of numeros) {
-soma  += n;
-}
-console.log(soma);
 
 // props
 defineProps({
@@ -116,8 +117,6 @@ const emit = defineEmits(["update:visible"]);
 const closePanel = () => {
   emit("update:visible", false);
 };
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -174,10 +173,10 @@ td {
   display: inline-flex;
   padding: 0 0;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   min-width: 60px;
   border-radius: 20px;
   overflow: hidden;
@@ -193,8 +192,8 @@ td {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   background: transparent;
   border: 0;
   padding: 0 10px;
@@ -234,8 +233,8 @@ aside .box .info > div {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   margin-bottom: 10px;
   color: #555;
 }
@@ -252,8 +251,8 @@ aside .box .info button {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   font-size: 16px;
 }
 
@@ -265,14 +264,14 @@ aside .box footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 aside > button {
   border: 0;
   padding: 15px 0;
-  background: #FF9800;
+  background: #ff9800;
   display: block;
   width: 100%;
   text-transform: uppercase;
@@ -281,48 +280,51 @@ aside > button {
   color: white !important;
 }
 
+aside  select {
+ height: 35px;
+ width: 100%;
+}
+
+
 aside > button:hover {
   background: #d37f00;
 }
 
+@media screen and (max-width: 700px) {
+  :root {
+    font-size: 60%;
+  }
+  table {
+    width: 95%;
+    border: 1px solid #555555;
+    margin: 1rem auto;
+    padding: 0;
+    font: 600 1.2rem Verdana;
+  }
 
-
-@media screen and (max-width:700px){
-    :root{
-     font-size: 60%;
-    }   
-    table{
-        width: 95%;
-        border: 1px solid #555555;
-        margin: 1rem auto;
-        padding: 0;
-        font: 600 1.2rem Verdana;
-    }
-
-    .panel {
-   flex-flow: row wrap;
-  position: absolute;
-     top: 80px;
+  .panel {
+    flex-flow: row wrap;
+    position: absolute;
+    top: 80px;
     bottom: 0;
     right: 0;
     &-wrap {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    transform: translateX(100%);
-    transition: 0.3s ease-out;
-    &.visible {
-      transform: translateX(0);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      transform: translateX(100%);
+      transition: 0.3s ease-out;
+      &.visible {
+        transform: translateX(0);
+      }
     }
   }
+  aside {
+    font-size: 40%;
+    width: 95%;
+    margin: auto;
+  }
 }
-aside {
-  font-size: 40%;
-  width: 95%;
-  margin: auto;
-}
-}
-
 </style>

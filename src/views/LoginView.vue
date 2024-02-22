@@ -10,15 +10,15 @@ const user = reactive({
 async function login() {
   try {
     const { data } = await api.post("/users", user);
-    console.log(data);
+   // console.log(data);
   } catch (error) {
     console.log(error?.response?.data);
   }
 
   // api
-  //   .get("/users")
+  //   .post("/users")
   //   .then((result) => {
-  //     console.log(result.data);
+  //    // console.log(result.data);
   //   })
   //   .catch((err) => {
   //     console.log("error");

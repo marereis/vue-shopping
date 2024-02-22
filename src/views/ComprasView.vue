@@ -1,7 +1,7 @@
 <template>
   <section>
     <h3>Comprovante de Venda</h3>
-    <div ref="content" class="content">
+    <div ref="content" class="content" id="content">
       <table class="table" id="table">
         <thead>
           <tr>
@@ -33,7 +33,7 @@
         <tbody>
           <tr>
             <td>Sub-total</td>
-            <td>R$ 418</td>
+            <td>{{ calculateTotal()}}</td>
           </tr>
           <tr>
             <td>Frete</td>
@@ -41,7 +41,7 @@
           </tr>
           <tr>
             <td>Total</td>
-            <td>R$ 418</td>
+            <td>{{ calculateTotal()}}</td>
           </tr>
         </tbody>
       </table>
@@ -52,30 +52,29 @@
 
 <script setup>
 import { useCart } from "../composables/useCart.js";
-const { productsCart, addCart, cart, removeCart } = useCart();
+const { productsCart, addCart, cart, removeCart, calculateTotal, sumItensCart } = useCart();
 import { ref, reactive, computed, onMounted } from "vue";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
+
 async function geraPdf() {
   const doc = jsPDF("p", "pt", "letter");
 
-  const contentHtml = document.querySelector(".content").innerHTML;
-
-  let comprovante = " Comprovante  de Venda ";
+   var comprovante = " Comprovante  de Venda ";
 
   doc.text(comprovante, 200, 30, {
     width: 200,
   });
+
   doc.autoTable({ html: "#table" });
 
   doc.autoTable({ html: "#resume" });
 
   doc.save("comprovanteVenda.pdf");
-}
+
+ }
 </script>
-
-
 
 <style lang="scss" scoped>
 section {
